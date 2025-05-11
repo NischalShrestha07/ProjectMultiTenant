@@ -1,7 +1,7 @@
 <x-tenant-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add Tenant') }}
+            {{ __('Add User') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form method="POST" action="{{ route('tenants.store') }}" method="POST">
+                    <form method="POST" action="{{ route('users.store') }}" method="POST">
                         @csrf
 
                         <!-- Name -->
@@ -29,14 +29,6 @@
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
-                        <!--Domain Name -->
-                        <div>
-                            <x-input-label for="domain_name" :value="__('Domain Name')" />
-                            <x-text-input placeholder="Domain Name" id="domain_name" class="block mt-1 w-full"
-                                type="text" name="domain_name" :value="old('domain_name')" required autofocus
-                                autocomplete="domain_name" />
-                            <x-input-error :messages="$errors->get('domain_name')" class="mt-2" />
-                        </div>
 
                         <!-- Password -->
                         <div class="mt-4">

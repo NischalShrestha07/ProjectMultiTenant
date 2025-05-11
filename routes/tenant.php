@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\App\ProfileController;
+use App\Http\Controllers\App\UserController;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -37,7 +38,7 @@ Route::middleware([
     });
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('app.dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 
     Route::middleware('auth')->group(function () {
@@ -45,7 +46,7 @@ Route::middleware([
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-        // Route::resource('tenants', TenantController::class);
+        Route::resource('users', UserController::class);
     });
 
     require __DIR__ . '/tenant-auth.php';

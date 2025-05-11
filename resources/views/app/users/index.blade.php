@@ -1,8 +1,8 @@
 <x-tenant-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tenants') }}
-            <x-btn-link class="ml-4 float-right" href="{{route('tenants.create')}}">Add Tenant</x-btn-link>
+            {{ __('Users') }}
+            <x-btn-link class="ml-4 float-right" href="{{route('users.create')}}">Add User</x-btn-link>
         </h2>
     </x-slot>
 
@@ -20,7 +20,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Domain</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -28,18 +28,17 @@
                             @php
                             $i=1;
                             @endphp
-                            @foreach ($tenants as $item)
+                            @foreach ($users as $item)
 
                             <tr>
                                 <th scope="row">{{$i++}}</th>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->email}}</td>
-                                {{-- <td>{{$item->domain_name}}</td> --}}
                                 <td>
-                                    @foreach ($item->domains as $data)
+                                    {{-- @foreach ($item->domains as $data)
                                     {{$data->domain}} {{$loop->last ? '':','}}
 
-                                    @endforeach
+                                    @endforeach --}}
                                 </td>
 
                             </tr>

@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\App;
 
-use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class TenantController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tenants = Tenant::with('domains')->get();
-        return view('tenants.index', compact('tenants'));
+        $users = User::get();
+        return view('app.users.index', compact('users'));
     }
 
     /**
@@ -21,7 +22,7 @@ class TenantController extends Controller
      */
     public function create()
     {
-        return view('tenants.create');
+        return view('app.users.create');
     }
 
     /**
@@ -31,31 +32,26 @@ class TenantController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
-            'domain_name' => 'required|string|max:255|unique:domains,domain',
+            'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|confirmed',
         ]);
         // dd($request);
-        $tenant = Tenant::create([
+        $tenant = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'domain_name' => $request->domain_name,
             'password' => $request->password,
         ]);
-        $tenant->domains()->create([
-            'domain' => $validatedData['domain_name'] .
-                '.' . config('app.domain')
-        ]);
-        // return $tenant;
 
-        return redirect()->route('tenants.index');
+
+
+        return redirect()->route('users.index');
     }
 
 
     /**
      * Display the specified resource.
      */
-    public function show(Tenant $tenant)
+    public function show(User $user)
     {
         //
     }
@@ -63,7 +59,7 @@ class TenantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tenant $tenant)
+    public function edit(User $user)
     {
         //
     }
@@ -71,7 +67,7 @@ class TenantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tenant $tenant)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -79,7 +75,7 @@ class TenantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tenant $tenant)
+    public function destroy(User $user)
     {
         //
     }
