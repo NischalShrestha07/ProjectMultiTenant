@@ -25,10 +25,10 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    // Route::get('/', function () {
-    //     // return tenant();
-    //     return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
-    // });
+    Route::get('/', function () {
+        // return tenant();
+        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+    });
 
 
 
@@ -46,8 +46,18 @@ Route::middleware([
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-        Route::resource('users', UserController::class);
+
+
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::resource('users', UserController::class);
+        });
     });
 
     require __DIR__ . '/tenant-auth.php';
 });
+
+
+
+///here is the issue of "not found" in localhost:8000 route
+/*to solve cmt     require __DIR__ . '/tenant-auth.php'; and middleware top code & optimize
+*/

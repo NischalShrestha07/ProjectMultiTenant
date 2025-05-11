@@ -30,6 +30,14 @@
                         </div>
 
 
+                        <!--Role  -->
+                        {{-- <div>
+                            <x-input-label for="role" :value="__('Role')" />
+                            <x-text-input placeholder="Role Name" id="role" class="block mt-1 w-full" type="text"
+                                name="role" :value="old('role')" required autofocus autocomplete="role" />
+                            <x-input-error :messages="$errors->get('role')" class="mt-2" />
+                        </div> --}}
+
                         <!-- Password -->
                         <div class="mt-4">
                             <x-input-label for="password" :value="__('Password')" />
