@@ -14,6 +14,7 @@
                     {{-- spatie implement by me --}}
                     @role('admin')
                     <x-btn-link href="{{route('users.index')}}">Users</x-btn-link>
+                    <x-btn-link href="{{route('products.index')}}">Products</x-btn-link>
                     @endrole
                 </div>
 

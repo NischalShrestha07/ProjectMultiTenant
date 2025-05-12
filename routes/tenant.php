@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\App\ProductController;
 use App\Http\Controllers\App\ProfileController;
 use App\Http\Controllers\App\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::middleware([
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);
+            Route::resource('products', ProductController::class);
         });
     });
 

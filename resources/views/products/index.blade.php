@@ -40,7 +40,11 @@
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->price}}</td>
                                 <td>{{$item->status}}</td>
-
+                                {{-- <td><a class="btn x-btn-link btn-primary"
+                                        href="{{route('products.edit',$item->id)}}">Edit</a></td>
+                                <td><a class="btn x-btn-link btn-primary"
+                                        href="{{route('products.delete',$item->id)}}">Edit</a>
+                                </td> --}}
 
                             </tr>
                             @endforeach
