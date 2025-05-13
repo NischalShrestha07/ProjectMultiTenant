@@ -2,7 +2,9 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Add Tenant') }}
+            <x-btn-link href="{{route('tenants.index')}}" class="float-right">Back</x-btn-link>
         </h2>
+
     </x-slot>
 
     <div class="py-12">

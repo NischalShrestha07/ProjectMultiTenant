@@ -2,6 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Add Product') }}
+            <x-btn-link class="ml-4 float-right" href="{{route('products.index')}}">Back</x-btn-link>
         </h2>
     </x-slot>
 

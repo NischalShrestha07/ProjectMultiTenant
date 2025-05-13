@@ -1,0 +1,10 @@
+<?php
+
+use App\Http\Controllers\Api\UserController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+
+Route::get('users', [UserController::class, 'users']);
+Route::post('login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);

@@ -37,6 +37,8 @@ class UserController extends Controller
             'password' => 'required|string|confirmed',
         ]);
         // dd($request);
+        $token = $request->user()->createToken($request->token_name);
+
         $tenant = User::create([
             'name' => $request->name,
             'email' => $request->email,

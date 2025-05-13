@@ -8,9 +8,6 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $products = Product::where('status', 'active')->get();
